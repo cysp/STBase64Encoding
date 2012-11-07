@@ -128,18 +128,17 @@ typedef NS_ENUM(NSUInteger, STBase64EncodingReturnType) {
 		NSUInteger quantumsInAccum = 0;
 		NSUInteger paddingBytesEncountered = 0;
 		for (NSUInteger i = 0; i < inputLength; ++i) {
-			if (paddingBytesEncountered > 2) {
-				localError = [NSError errorWithDomain:STBase64EncodingErrorDomain code:STBase64EncodingErrorInvalidInput userInfo:nil];
-				break;
-			}
-
 			char inputByte = inputBytes[i];
-			accum <<= 6;
 
 			if (inputByte == '=') {
-				++paddingBytesEncountered;
+				if (paddingBytesEncountered < 2) {
+					accum <<= 6;
+					++paddingBytesEncountered;
+				}
 				continue;
 			}
+
+			accum <<= 6;
 			++quantumsInAccum;
 
 			if (paddingBytesEncountered > 0) {

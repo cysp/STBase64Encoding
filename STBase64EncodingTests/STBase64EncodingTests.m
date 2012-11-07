@@ -102,15 +102,34 @@
 		STAssertNotNil(output, @"err: %@", error);
 		STAssertEqualObjects(output, expected, @"");
 	}
+	struct testcase {
+		void *decodedBytes;
+		unsigned long decodedLength;
+		void *encodedBytes;
+		unsigned long encodedLength;
+	} testcases[] = {
+		{
+			"", 0, "====", 4,
+		},
+		{
+			"a", 1, "YQ======", 8,
+		},
+	};
+	for (int i = 0; i < sizeof(testcases) / sizeof(testcases[0]); ++i) {
+		struct testcase testcase = testcases[i];
+		NSData *input = [NSData dataWithBytesNoCopy:testcase.encodedBytes length:testcase.encodedLength freeWhenDone:NO];
+		NSData *expected = [NSData dataWithBytesNoCopy:testcase.decodedBytes length:testcase.decodedLength freeWhenDone:NO];
 
+		NSError *error = nil;
+		NSData *output = [STBase64Encoding dataByBase64DecodingData:input error:&error];
+		STAssertNotNil(output, @"err: %@", error);
+		STAssertEqualObjects(output, expected, @"");
+	}
 
 	struct errorcase {
 		void *encodedBytes;
 		unsigned long encodedLength;
 	} errorcases[] = {
-		{
-			"YQ======", 8,
-		},
 		{
 			"QUJDRA==========QUJD", 20,
 		},
