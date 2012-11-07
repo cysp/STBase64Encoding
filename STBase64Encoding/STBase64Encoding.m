@@ -125,7 +125,7 @@ typedef NS_ENUM(NSUInteger, STBase64EncodingReturnType) {
 		}
 
 		NSUInteger accum = 0;
-		NSUInteger quantumsInAccum = 0;
+		NSUInteger sextetsInAccum = 0;
 		NSUInteger paddingBytesEncountered = 0;
 		for (NSUInteger i = 0; i < inputLength; ++i) {
 			char inputByte = inputBytes[i];
@@ -139,7 +139,7 @@ typedef NS_ENUM(NSUInteger, STBase64EncodingReturnType) {
 			}
 
 			accum <<= 6;
-			++quantumsInAccum;
+			++sextetsInAccum;
 
 			if (paddingBytesEncountered > 0) {
 				localError = [NSError errorWithDomain:STBase64EncodingErrorDomain code:STBase64EncodingErrorInvalidInput userInfo:nil];
@@ -157,21 +157,21 @@ typedef NS_ENUM(NSUInteger, STBase64EncodingReturnType) {
 				accum |= 63;
 			}
 
-			if (quantumsInAccum == 4) {
+			if (sextetsInAccum == 4) {
 				decoded[decodedLength++] = (char)(accum >> 16);
 				decoded[decodedLength++] = (char)(accum >>  8);
 				decoded[decodedLength++] = (char)(accum >>  0);
-				quantumsInAccum = 0;
+				sextetsInAccum = 0;
 			}
 		}
 
-		if (quantumsInAccum > 0) {
+		if (sextetsInAccum > 0) {
 			decoded[decodedLength] = (char)(accum >> 16);
 		}
-		if (quantumsInAccum > 1) {
+		if (sextetsInAccum > 1) {
 			decoded[++decodedLength] = (char)(accum >>  8);
 		}
-		if (quantumsInAccum > 2) {
+		if (sextetsInAccum > 2) {
 			decoded[++decodedLength] = 0;
 		}
 	} while (0);
