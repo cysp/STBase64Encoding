@@ -13,9 +13,7 @@
 		2C2AA5A4164A5FFC001B7050 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2AA591164A5FFC001B7050 /* Foundation.framework */; };
 		2C2AA5A7164A5FFC001B7050 /* libSTBase64Encoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2AA58E164A5FFC001B7050 /* libSTBase64Encoding.a */; };
 		2C2AA5B0164A5FFC001B7050 /* STBase64EncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2AA5AF164A5FFC001B7050 /* STBase64EncodingTests.m */; };
-		2C36DACB164A605800951AEC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C36DACA164A605800951AEC /* UIKit.framework */; };
 		2CCF481017471CFD00BBE8A2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2AA5A0164A5FFC001B7050 /* SenTestingKit.framework */; };
-		2CCF481117471CFD00BBE8A2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCF47FB17471CEB00BBE8A2 /* Cocoa.framework */; };
 		2CCF481F17471EA100BBE8A2 /* STBase64Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2AA598164A5FFC001B7050 /* STBase64Encoding.m */; };
 		2CCF482017471EA400BBE8A2 /* STBase64EncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2AA5AF164A5FFC001B7050 /* STBase64EncodingTests.m */; };
 		2CCF482117471EB900BBE8A2 /* libSTBase64Encoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCF47FA17471CEB00BBE8A2 /* libSTBase64Encoding.a */; };
@@ -62,9 +60,7 @@
 		2C2AA5AA164A5FFC001B7050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C2AA5AE164A5FFC001B7050 /* STBase64EncodingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STBase64EncodingTests.h; sourceTree = "<group>"; };
 		2C2AA5AF164A5FFC001B7050 /* STBase64EncodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STBase64EncodingTests.m; sourceTree = "<group>"; };
-		2C36DACA164A605800951AEC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2CCF47FA17471CEB00BBE8A2 /* libSTBase64Encoding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTBase64Encoding.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CCF47FB17471CEB00BBE8A2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		2CCF480F17471CFD00BBE8A2 /* STBase64EncodingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STBase64EncodingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,7 +77,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C2AA5A4164A5FFC001B7050 /* Foundation.framework in Frameworks */,
-				2C36DACB164A605800951AEC /* UIKit.framework in Frameworks */,
 				2C2AA5A1164A5FFC001B7050 /* SenTestingKit.framework in Frameworks */,
 				2C2AA5A7164A5FFC001B7050 /* libSTBase64Encoding.a in Frameworks */,
 			);
@@ -98,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CCF481117471CFD00BBE8A2 /* Cocoa.framework in Frameworks */,
 				2CCF481017471CFD00BBE8A2 /* SenTestingKit.framework in Frameworks */,
 				2CCF482117471EB900BBE8A2 /* libSTBase64Encoding.a in Frameworks */,
 			);
@@ -132,9 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				2C2AA591164A5FFC001B7050 /* Foundation.framework */,
-				2C36DACA164A605800951AEC /* UIKit.framework */,
 				2C2AA5A0164A5FFC001B7050 /* SenTestingKit.framework */,
-				2CCF47FB17471CEB00BBE8A2 /* Cocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
