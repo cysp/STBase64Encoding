@@ -20,6 +20,20 @@
                ReferencedContainer = "container:STBase64Encoding.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2CCF480E17471CFD00BBE8A2"
+               BuildableName = "STBase64EncodingTests.octest"
+               BlueprintName = "STBase64EncodingTests-mac"
+               ReferencedContainer = "container:STBase64Encoding.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
