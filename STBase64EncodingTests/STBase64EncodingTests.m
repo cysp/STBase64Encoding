@@ -98,16 +98,19 @@
 		NSData *expected = testcase[0];
 
 		NSError *error = nil;
-		NSData *output = [STBase64Encoding dataByBase64DecodingData:input error:&error];
+		NSData *output = [STBase64Encoding dataByBase64DecodingData:input withOptions:0 error:&error];
 		STAssertNotNil(output, @"err: %@", error);
 		STAssertEqualObjects(output, expected, @"");
 	}
+
 	struct testcase {
 		void *decodedBytes;
 		unsigned long decodedLength;
 		void *encodedBytes;
 		unsigned long encodedLength;
-	} testcases[] = {
+	};
+
+	struct testcase testcases[] = {
 		{
 			"", 0, "====", 4,
 		},
@@ -121,7 +124,29 @@
 		NSData *expected = [NSData dataWithBytesNoCopy:testcase.decodedBytes length:testcase.decodedLength freeWhenDone:NO];
 
 		NSError *error = nil;
-		NSData *output = [STBase64Encoding dataByBase64DecodingData:input error:&error];
+		NSData *output = [STBase64Encoding dataByBase64DecodingData:input withOptions:0 error:&error];
+		STAssertNotNil(output, @"err: %@", error);
+		STAssertEqualObjects(output, expected, @"");
+	}
+
+	struct testcase sloppycases[] = {
+		{
+			"", 0, "== ==", 5,
+		},
+		{
+			"a", 1, "Y Q======", 9,
+		},
+		{
+			"a", 1, "Y\rQ===\n=== ", 11,
+		},
+	};
+	for (int i = 0; i < sizeof(sloppycases) / sizeof(sloppycases[0]); ++i) {
+		struct testcase sloppycase = sloppycases[i];
+		NSData *input = [NSData dataWithBytesNoCopy:sloppycase.encodedBytes length:sloppycase.encodedLength freeWhenDone:NO];
+		NSData *expected = [NSData dataWithBytesNoCopy:sloppycase.decodedBytes length:sloppycase.decodedLength freeWhenDone:NO];
+
+		NSError *error = nil;
+		NSData *output = [STBase64Encoding dataByBase64DecodingData:input withOptions:STBase64DecodingOptionSkipInvalidInputBytes error:&error];
 		STAssertNotNil(output, @"err: %@", error);
 		STAssertEqualObjects(output, expected, @"");
 	}
@@ -136,6 +161,9 @@
 		{
 			"YQ==YQ==", 8,
 		},
+		{
+			"= ===", 5,
+		},
 	};
 
 	for (int i = 0; i < sizeof(errorcases) / sizeof(errorcases[0]); ++i) {
@@ -143,7 +171,7 @@
 		NSData *input = [NSData dataWithBytesNoCopy:errorcase.encodedBytes length:errorcase.encodedLength freeWhenDone:NO];
 
 		NSError *error = nil;
-		NSData *output = [STBase64Encoding dataByBase64DecodingData:input error:&error];
+		NSData *output = [STBase64Encoding dataByBase64DecodingData:input withOptions:0 error:&error];
 		STAssertNil(output, @"i: %@ o: %@", input, output);
 		STAssertNotNil(error, @"");
 	}

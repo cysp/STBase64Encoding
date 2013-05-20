@@ -17,14 +17,19 @@ extern NSInteger const STBase64EncodingErrorUnknown;
 extern NSInteger const STBase64EncodingErrorInvalidInput;
 
 
+typedef NS_OPTIONS(NSUInteger, STBase64DecodingOptions) {
+	STBase64DecodingOptionSkipInvalidInputBytes = 0b0001,
+};
+
+
 @interface STBase64Encoding : NSObject
 
 + (NSData *)dataByBase64EncodingData:(NSData *)data;
 + (NSString *)stringByBase64EncodingData:(NSData *)data;
 
 + (NSData *)dataByBase64DecodingString:(NSString *)string;
-+ (NSData *)dataByBase64DecodingString:(NSString *)string error:(NSError * __autoreleasing *)error;
++ (NSData *)dataByBase64DecodingString:(NSString *)string withOptions:(STBase64DecodingOptions)options error:(NSError * __autoreleasing *)error;
 + (NSData *)dataByBase64DecodingData:(NSData *)data;
-+ (NSData *)dataByBase64DecodingData:(NSData *)data error:(NSError * __autoreleasing *)error;
++ (NSData *)dataByBase64DecodingData:(NSData *)data withOptions:(STBase64DecodingOptions)options error:(NSError * __autoreleasing *)error;
 
 @end
