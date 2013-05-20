@@ -86,9 +86,9 @@ typedef NS_ENUM(NSUInteger, STBase64EncodingReturnType) {
 #pragma mark - Decoding
 
 + (NSData *)dataByBase64DecodingString:(NSString *)string {
-	return [self dataByBase64DecodingString:string error:NULL];
+	return [self dataByBase64DecodingString:string withOptions:0 error:NULL];
 }
-+ (NSData *)dataByBase64DecodingString:(NSString *)string error:(NSError *__autoreleasing *)error {
++ (NSData *)dataByBase64DecodingString:(NSString *)string withOptions:(STBase64DecodingOptions)options error:(NSError *__autoreleasing *)error {
 	NSData *data = [string dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:NO];
 	if (!data) {
 		if (error) {
@@ -97,13 +97,13 @@ typedef NS_ENUM(NSUInteger, STBase64EncodingReturnType) {
 		return nil;
 	}
 
-	return [self dataByBase64DecodingData:data error:error];
+	return [self dataByBase64DecodingData:data withOptions:options error:error];
 }
 
 + (NSData *)dataByBase64DecodingData:(NSData *)data {
-	return [self dataByBase64DecodingData:data error:NULL];
+	return [self dataByBase64DecodingData:data withOptions:0 error:NULL];
 }
-+ (NSData *)dataByBase64DecodingData:(NSData *)data error:(NSError * __autoreleasing *)error {
++ (NSData *)dataByBase64DecodingData:(NSData *)data withOptions:(STBase64DecodingOptions)options error:(NSError *__autoreleasing *)error {
 	NSError *localError = nil;
 
 	const char *inputBytes = [data bytes];
@@ -113,9 +113,11 @@ typedef NS_ENUM(NSUInteger, STBase64EncodingReturnType) {
 	char *decoded = NULL;
 
 	do {
-		if (inputLength % 4) {
-			localError = [NSError errorWithDomain:STBase64EncodingErrorDomain code:STBase64EncodingErrorInvalidInput userInfo:nil];
-			break;
+		if (!(options & STBase64DecodingOptionSkipInvalidInputBytes)) {
+			if (inputLength % 4) {
+				localError = [NSError errorWithDomain:STBase64EncodingErrorDomain code:STBase64EncodingErrorInvalidInput userInfo:nil];
+				break;
+			}
 		}
 
 		decoded = malloc(expectedLength);
@@ -138,23 +140,39 @@ typedef NS_ENUM(NSUInteger, STBase64EncodingReturnType) {
 				continue;
 			}
 
-			accum <<= 6;
-			++sextetsInAccum;
-
-			if (paddingBytesEncountered > 0) {
-				localError = [NSError errorWithDomain:STBase64EncodingErrorDomain code:STBase64EncodingErrorInvalidInput userInfo:nil];
-				break;
+			bool ignoreInputByte = false;
+			if (options & STBase64DecodingOptionSkipInvalidInputBytes) {
+				if (inputByte >= 'A' && inputByte <= 'Z') {
+				} else if (inputByte >= 'a' && inputByte <= 'z') {
+				} else if (inputByte >= '0' && inputByte <= '9') {
+				} else if (inputByte == '+') {
+				} else if (inputByte == '/') {
+				} else {
+					ignoreInputByte = true;
+				}
 			}
-			if (inputByte >= 'A' && inputByte <= 'Z') {
-				accum |= (NSUInteger)(inputByte - 'A') & 0x3f;
-			} else if (inputByte >= 'a' && inputByte <= 'z') {
-				accum |= (NSUInteger)((inputByte - 'a') + 26) & 0x3f;
-			} else if (inputByte >= '0' && inputByte <= '9') {
-				accum |= (NSUInteger)((inputByte - '0') + 52) & 0x3f;
-			} else if (inputByte == '+') {
-				accum |= 62;
-			} else if (inputByte == '/') {
-				accum |= 63;
+
+			if (!ignoreInputByte) {
+				if (paddingBytesEncountered > 0) {
+					localError = [NSError errorWithDomain:STBase64EncodingErrorDomain code:STBase64EncodingErrorInvalidInput userInfo:nil];
+					break;
+				}
+
+				accum <<= 6;
+
+				if (inputByte >= 'A' && inputByte <= 'Z') {
+					accum |= (NSUInteger)(inputByte - 'A') & 0x3f;
+				} else if (inputByte >= 'a' && inputByte <= 'z') {
+					accum |= (NSUInteger)((inputByte - 'a') + 26) & 0x3f;
+				} else if (inputByte >= '0' && inputByte <= '9') {
+					accum |= (NSUInteger)((inputByte - '0') + 52) & 0x3f;
+				} else if (inputByte == '+') {
+					accum |= 62;
+				} else if (inputByte == '/') {
+					accum |= 63;
+				}
+
+				++sextetsInAccum;
 			}
 
 			if (sextetsInAccum == 4) {
