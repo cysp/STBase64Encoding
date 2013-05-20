@@ -88,6 +88,9 @@ typedef NS_ENUM(NSUInteger, STBase64EncodingReturnType) {
 + (NSData *)dataByBase64DecodingString:(NSString *)string {
 	return [self dataByBase64DecodingString:string withOptions:0 error:NULL];
 }
++ (NSData *)dataByBase64DecodingString:(NSString *)string error:(NSError * __autoreleasing *)error {
+	return [self dataByBase64DecodingString:string withOptions:0 error:error];
+}
 + (NSData *)dataByBase64DecodingString:(NSString *)string withOptions:(STBase64DecodingOptions)options error:(NSError *__autoreleasing *)error {
 	NSData *data = [string dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:NO];
 	if (!data) {
@@ -102,6 +105,9 @@ typedef NS_ENUM(NSUInteger, STBase64EncodingReturnType) {
 
 + (NSData *)dataByBase64DecodingData:(NSData *)data {
 	return [self dataByBase64DecodingData:data withOptions:0 error:NULL];
+}
++ (NSData *)dataByBase64DecodingData:(NSData *)data error:(NSError * __autoreleasing *)error {
+	return [self dataByBase64DecodingData:data withOptions:0 error:error];
 }
 + (NSData *)dataByBase64DecodingData:(NSData *)data withOptions:(STBase64DecodingOptions)options error:(NSError *__autoreleasing *)error {
 	NSError *localError = nil;

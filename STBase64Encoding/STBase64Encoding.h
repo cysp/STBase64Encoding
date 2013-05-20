@@ -33,3 +33,8 @@ typedef NS_OPTIONS(NSUInteger, STBase64DecodingOptions) {
 + (NSData *)dataByBase64DecodingData:(NSData *)data withOptions:(STBase64DecodingOptions)options error:(NSError * __autoreleasing *)error;
 
 @end
+
+@interface STBase64Encoding (BackwardCompatibility)
++ (NSData *)dataByBase64DecodingString:(NSString *)string error:(NSError * __autoreleasing *)error;
++ (NSData *)dataByBase64DecodingData:(NSData *)data error:(NSError * __autoreleasing *)error;
+@end
