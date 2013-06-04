@@ -68,7 +68,7 @@
 	};
 	_testcases = [NSMutableArray array];
 
-	for (int i = 0; i < sizeof(testcases) / sizeof(testcases[0]); ++i) {
+	for (unsigned int i = 0; i < sizeof(testcases) / sizeof(testcases[0]); ++i) {
 		struct testcase testcase = testcases[i];
 		[_testcases addObject:@[ [NSData dataWithBytes:testcase.decodedBytes length:testcase.decodedLength], [NSData dataWithBytes:testcase.encodedBytes length:testcase.encodedLength] ] ];
 	}
@@ -118,7 +118,7 @@
 			"a", 1, "YQ======", 8,
 		},
 	};
-	for (int i = 0; i < sizeof(testcases) / sizeof(testcases[0]); ++i) {
+	for (unsigned int i = 0; i < sizeof(testcases) / sizeof(testcases[0]); ++i) {
 		struct testcase testcase = testcases[i];
 		NSData *input = [NSData dataWithBytesNoCopy:testcase.encodedBytes length:testcase.encodedLength freeWhenDone:NO];
 		NSData *expected = [NSData dataWithBytesNoCopy:testcase.decodedBytes length:testcase.decodedLength freeWhenDone:NO];
@@ -140,7 +140,7 @@
 			"a", 1, "Y\rQ===\n=== ", 11,
 		},
 	};
-	for (int i = 0; i < sizeof(sloppycases) / sizeof(sloppycases[0]); ++i) {
+	for (unsigned int i = 0; i < sizeof(sloppycases) / sizeof(sloppycases[0]); ++i) {
 		struct testcase sloppycase = sloppycases[i];
 		NSData *input = [NSData dataWithBytesNoCopy:sloppycase.encodedBytes length:sloppycase.encodedLength freeWhenDone:NO];
 		NSData *expected = [NSData dataWithBytesNoCopy:sloppycase.decodedBytes length:sloppycase.decodedLength freeWhenDone:NO];
@@ -166,7 +166,7 @@
 		},
 	};
 
-	for (int i = 0; i < sizeof(errorcases) / sizeof(errorcases[0]); ++i) {
+	for (unsigned int i = 0; i < sizeof(errorcases) / sizeof(errorcases[0]); ++i) {
 		struct errorcase errorcase = errorcases[i];
 		NSData *input = [NSData dataWithBytesNoCopy:errorcase.encodedBytes length:errorcase.encodedLength freeWhenDone:NO];
 
