@@ -1,1 +1,3 @@
 language: objective-c
+xcode_project: STBase64Encoding.xcodeproj
+xcode_scheme: STBase64Encoding-mac-coverage
