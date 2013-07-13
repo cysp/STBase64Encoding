@@ -392,7 +392,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -421,7 +420,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -432,6 +430,7 @@
 				DSTROOT = /tmp/STBase64Encoding.dst;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = STBase64Encoding;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -442,6 +441,7 @@
 				DSTROOT = /tmp/STBase64Encoding.dst;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = STBase64Encoding;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -455,6 +455,7 @@
 				);
 				INFOPLIST_FILE = STBase64EncodingTests/Info.plist;
 				PRODUCT_NAME = STBase64EncodingTests;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -468,6 +469,7 @@
 				);
 				INFOPLIST_FILE = STBase64EncodingTests/Info.plist;
 				PRODUCT_NAME = STBase64EncodingTests;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -480,6 +482,7 @@
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = STBase64Encoding;
 				SDKROOT = macosx;
@@ -496,6 +499,7 @@
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = STBase64Encoding;
 				SDKROOT = macosx;
@@ -569,6 +573,7 @@
 				2CCF480917471CEB00BBE8A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2CCF481C17471CFD00BBE8A2 /* Build configuration list for PBXNativeTarget "STBase64EncodingTests-mac" */ = {
 			isa = XCConfigurationList;
@@ -577,6 +582,7 @@
 				2CCF481E17471CFD00BBE8A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
