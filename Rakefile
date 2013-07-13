@@ -9,6 +9,7 @@ namespace :test do
 			'-project', "#{PROJECTNAME}.xcodeproj",
 			'-scheme', "#{PROJECTNAME}-iOS",
 			'-sdk', 'iphonesimulator',
+			'-configuration', 'Coverage',
 		]
 		testargs = [
 			'parallelize',
@@ -22,6 +23,7 @@ namespace :test do
 			'-project', "#{PROJECTNAME}.xcodeproj",
 			'-scheme', "#{PROJECTNAME}-mac",
 			'-sdk', 'macosx',
+			'-configuration', 'Coverage',
 		]
 		testargs = [
 			'parallelize',
