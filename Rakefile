@@ -63,6 +63,7 @@ class Ios < BuildPlatform
 		'-project', "#{PROJECTNAME}.xcodeproj",
 		'-scheme', "#{PROJECTNAME}-iOS",
 		'-sdk', 'iphonesimulator6.0',
+		'ONLY_ACTIVE_ARCH=NO',
 	].freeze
 end
 
