@@ -439,6 +439,7 @@
 		2C2AA5B4164A5FFC001B7050 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/STBase64Encoding.dst;
 				PRODUCT_NAME = STBase64Encoding;
 				SDKROOT = iphoneos;
@@ -449,6 +450,7 @@
 		2C2AA5B5164A5FFC001B7050 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/STBase64Encoding.dst;
 				PRODUCT_NAME = STBase64Encoding;
 				SDKROOT = iphoneos;
@@ -531,6 +533,7 @@
 		2C56618317608C7500EBCD54 /* Coverage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/STBase64Encoding.dst;
 				PRODUCT_NAME = STBase64Encoding;
 				SDKROOT = iphoneos;
