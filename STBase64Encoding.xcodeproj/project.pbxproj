@@ -519,6 +519,7 @@
 				);
 				INFOPLIST_FILE = STBase64EncodingTests/Info.plist;
 				PRODUCT_NAME = STBase64EncodingTests;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Coverage;
