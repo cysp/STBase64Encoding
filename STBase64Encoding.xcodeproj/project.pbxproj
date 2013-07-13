@@ -428,7 +428,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/STBase64Encoding.dst;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = STBase64Encoding;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -439,7 +438,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/STBase64Encoding.dst;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = STBase64Encoding;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -516,7 +514,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/STBase64Encoding.dst;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = STBase64Encoding;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -544,7 +541,6 @@
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = STBase64Encoding;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -574,7 +570,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = STBase64Encoding;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -591,7 +586,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = STBase64Encoding;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
