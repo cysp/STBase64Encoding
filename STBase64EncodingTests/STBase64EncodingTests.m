@@ -101,7 +101,7 @@
 		NSData *expected = testcase[0];
 
 		NSError *error = nil;
-		NSData *output = [STBase64Encoding dataByBase64DecodingData:input withOptions:0 error:&error];
+		NSData *output = [STBase64Encoding dataByBase64DecodingData:input];
 		STAssertNotNil(output, @"err: %@", error);
 		STAssertEqualObjects(output, expected, @"");
 	}
@@ -111,7 +111,7 @@
 		NSData *expected = testcase[0];
 
 		NSError *error = nil;
-		NSData *output = [STBase64Encoding dataByBase64DecodingString:input withOptions:0 error:&error];
+		NSData *output = [STBase64Encoding dataByBase64DecodingString:input];
 		STAssertNotNil(output, @"err: %@", error);
 		STAssertEqualObjects(output, expected, @"");
 	}
