@@ -87,8 +87,11 @@
 		NSData *input = testcase[0];
 		NSData *expected = testcase[1];
 
-		NSData *output = [STBase64Encoding dataByBase64EncodingData:input];
-		STAssertEqualObjects(output, expected, @"");
+		NSData *outputData = [STBase64Encoding dataByBase64EncodingData:input];
+		STAssertEqualObjects(outputData, expected, @"");
+
+		NSString *outputString = [STBase64Encoding stringByBase64EncodingData:input];
+		STAssertEqualObjects([outputString dataUsingEncoding:NSASCIIStringEncoding], expected, @"");
 	}
 }
 
@@ -99,6 +102,16 @@
 
 		NSError *error = nil;
 		NSData *output = [STBase64Encoding dataByBase64DecodingData:input withOptions:0 error:&error];
+		STAssertNotNil(output, @"err: %@", error);
+		STAssertEqualObjects(output, expected, @"");
+	}
+
+	for (NSArray *testcase in _testcases) {
+		NSString *input = [[NSString alloc] initWithData:testcase[1] encoding:NSASCIIStringEncoding];
+		NSData *expected = testcase[0];
+
+		NSError *error = nil;
+		NSData *output = [STBase64Encoding dataByBase64DecodingString:input withOptions:0 error:&error];
 		STAssertNotNil(output, @"err: %@", error);
 		STAssertEqualObjects(output, expected, @"");
 	}
