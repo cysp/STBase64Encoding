@@ -168,7 +168,7 @@ module BuildCommands
 				success = true
 			end
 		end
-		!success
+		success
 	end
 
 	private
